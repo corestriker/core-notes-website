@@ -1,0 +1,192 @@
+---
+import Basis from "../layouts/Basis.astro";
+import Foto from "../components/Foto.astro";
+
+import faecher from "../assets/fotos/faecher.jpg";
+import ruecken from "../assets/fotos/ruecken.jpg";
+import innen from "../assets/fotos/innen.jpg";
+import rueckseite from "../assets/fotos/rueckseite.jpg";
+import klammern from "../assets/fotos/klammern.jpg";
+import werkbank from "../assets/fotos/werkbank.jpg";
+import zuschnitt from "../assets/fotos/zuschnitt.jpg";
+
+const mail = "hallo@core-notes.de";
+
+// Werkstatt-Log: neueste Einträge oben. Nur echte Daten!
+const log: { datum: string; text: string; offen?: boolean }[] = [
+  { datum: "2026-10-19", text: "Fünf Farben fertig, erste Fotos." },
+  { datum: "2026-10-18", text: "Beschnittgerät und einen Eckenrunder fürs ganze Buch bestellt.", offen: true },
+  { datum: "2026-10-15", text: "Die ersten Prototypen sind genäht." },
+  { datum: "2026-10-13", text: "Erster Druck. Der alte Drucker läuft wieder." },
+  { datum: "2026-10-07", text: "Erste Vorlagen in Inkscape." },
+  { datum: "2026-10-06", text: "Die Idee: selber machen." },
+  { datum: "2026-10-02", text: "Erstes Notizbuch gekauft – und das Cover gleich personalisiert." },
+];
+
+const datum = (iso: string) => new Date(iso).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" });
+---
+
+<Basis>
+  <header class="wrap kopf">
+    <div class="leiste"><span>Bald erhältlich</span><span>Handgemacht in Deutschland</span></div>
+    <h1>c0re<br />NOTES</h1>
+    <div class="leiste"><span>Taschennotizbuch · A6</span><span>48 Seiten</span></div>
+    <p class="einleitung">
+      Handgemachte Notizbücher. Noch sind es Prototypen, aber es geht bald los. Wenn du gerade eins in der Hand hältst, gehörst du zu den Ersten.
+    </p>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="collage">
+        <Foto bild={faecher} alt="Fünf Notizbücher in Grün, Limette, Gelb, Blau und Mint, aufgefächert auf einer Schneidematte" text="die ersten fünf" lage="links" klebeband sofort />
+        <Foto bild={ruecken} alt="Nahaufnahme der genähten Buchrücken" text="von Hand genäht" lage="rechts" klebeband />
+      </div>
+
+      <hr class="schnitt" />
+
+      <section class="abschnitt akzent-mint" aria-labelledby="was">
+        <span class="nummer">01</span>
+        <div class="spalten">
+          <div>
+            <h2 id="was">Was ist <mark>das</mark>?</h2>
+            <p>Ein kleines Notizbuch für die Tasche. Kleines Buch, wenig Platz – also nur der Kern.</p>
+            <p>(Stimmt natürlich nicht. Man kann alles reinschreiben.)</p>
+            <dl class="daten">
+              <div><dt>Format</dt><dd>A6, 105 × 148 mm</dd></div>
+              <div><dt>Umfang</dt><dd>48 Seiten</dd></div>
+              <div><dt>Innen</dt><dd>Punktraster 4 mm, weißes 120-g-Papier</dd></div>
+              <div><dt>Umschlag</dt><dd>300-g-Farbkarton, wechselnde Farben</dd></div>
+              <div><dt>Bindung</dt><dd>von Hand genäht, gewachstes Garn</dd></div>
+              <div><dt>Ecken</dt><dd>abgerundet</dd></div>
+              <div><dt>Rückseite</dt><dd>mit Chargennummer</dd></div>
+            </dl>
+            <p class="hinweis">
+              Weitere Varianten sind in Arbeit. Hast du eine Idee? <a href={`mailto:${mail}`}>Schreib mir.</a>
+            </p>
+          </div>
+          <div class="spalten-bilder">
+            <Foto bild={innen} alt="Aufgeschlagenes Notizbuch mit Punktraster" text="innen: Punktraster, 4 mm" lage="rechts" />
+            <Foto bild={rueckseite} alt="Gelbe Rückseite mit Feld für die Nummer und dem Hinweis Handgemacht in Deutschland" text="hinten: Nr. ___" />
+          </div>
+        </div>
+      </section>
+
+      <hr class="schnitt" />
+
+      <section class="abschnitt akzent-gelb" aria-labelledby="anfang">
+        <span class="nummer">02</span>
+        <div class="spalten">
+          <div>
+            <h2 id="anfang">Wie es <mark>anfing</mark></h2>
+            <p>
+              Ich arbeite viel am Computer, ich bin Softwareentwickler. Und ich war lange auf der Suche nach etwas Handwerklichem, das man in der
+              Wohnung machen kann.
+            </p>
+            <p>
+              Bei YouTube bin ich dann übers Journaling gestolpert und dachte: Das könnte mir helfen, den Mental Load in den Griff zu bekommen.
+              Digitale Notizen haben für mich nie wirklich funktioniert.
+            </p>
+            <p>
+              Dann habe ich Field Notes gesehen. Sehen super aus, sind hier in Deutschland aber schwer zu bekommen. Also bin ich in den
+              Schreibwarenladen: A6, gepunktet. Die Auswahl: genau zwei Notizbücher, gleiches Modell, zwei Cover. Beide nicht ganz mein
+              Geschmack. Ich hab trotzdem eins gekauft, weil ich unbedingt eins haben wollte – und es mir dann selbst verschönert:
+              Coverpapier aus dem Bastelladen, zugeschnitten, drübergeklebt. Fand ich ganz cool.
+            </p>
+            <p>
+              Von den Journaling-Videos war es nicht weit zu „Wie mache ich mein eigenes Notizbuch?“. Das hat mich gehookt. Eine Woche
+              gehadert, ob ich das wirklich mache. Dann einfach mal machen: Vorlagen in Inkscape erstellt, den alten Drucker wieder zum
+              Laufen gebracht, Tinte bestellt, gutes Papier besorgt.
+            </p>
+            <p>
+              Jetzt sitze ich hier mit den ersten fünf Büchern. Alle haben noch Schönheitsfehler und brauchen Verbesserung. Aber ich will
+              weitermachen. Macht Spaß.
+            </p>
+          </div>
+          <div>
+            <Foto bild={klammern} alt="Drei Notizbücher mit Klammern auf der Schneidematte, daneben Garn und Werkzeug" text="frisch genäht, noch in der Presse" lage="links" klebeband />
+            <p class="hinweis">
+              <b>Und der Name?</b> Core heißt Kern. Die Null statt dem O ist meine persönliche Note – als Entwickler tauscht man schon mal
+              Buchstaben gegen Zahlen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="schnitt" />
+
+      <section class="abschnitt akzent-blau" aria-labelledby="entstehung">
+        <span class="nummer">03</span>
+        <h2 id="entstehung">Wie es <mark>entsteht</mark></h2>
+        <Foto bild={werkbank} alt="Arbeitsplatz: Schneidematte mit Umschlägen, Papierbögen, Falzbein, Ahle, Stickgarn und Lineal" text="der Arbeitsplatz" sizes="(min-width: 880px) 840px, 92vw" />
+        <div class="spalten">
+          <ol class="schritte">
+            <li><p><b>Vorlagen.</b> Umschlag außen, innen und die Punktseiten – selbst gestaltet in Inkscape.</p></li>
+            <li><p><b>Drucken.</b> Alles selbst gedruckt.</p></li>
+            <li><p><b>Zuschneiden.</b> Die bedruckten A4-Bögen auf A5.</p></li>
+            <li><p><b>Falzen.</b> In der Mitte gefaltet, so wird daraus A6.</p></li>
+            <li><p><b>Stechen.</b> Löcher mit der Ahle, durch eine selbstgebaute Schablone aus Karton. Damit sie immer an der gleichen Stelle sitzen.</p></li>
+            <li>
+              <p>
+                <b>Garn wachsen.</b> Stickgarn, selbst gewachst mit einer Kerze, damit es weniger franst. Ganz zufrieden bin ich
+                damit noch nicht. Aber Stickgarn gibt's in sehr vielen Farben – so kann ich am Rücken Akzente setzen.
+              </p>
+            </li>
+            <li><p><b>Nähen.</b> Von der Mitte nach außen, wieder zurück, in der Mitte festknoten.</p></li>
+          </ol>
+          <ol class="schritte ab-acht" start="8">
+            <li>
+              <p>
+                <b>Beschneiden.</b> Beim Falten steht das innere Papier am weitesten raus. Also müssen die drei Außenkanten nochmal sauber
+                geschnitten werden. Das schafft mein aktuelles Gerät nicht – ein neues ist bestellt.
+              </p>
+            </li>
+            <li><p><b>Ecken runden.</b> Im Moment noch Blatt für Blatt. Ein Eckenrunder fürs ganze Buch ist unterwegs.</p></li>
+            <li><p><b>Nummerieren.</b> Die Chargennummer auf der Rückseite. Von Hand oder per Drucker? Noch offen. Leider hab ich eine Handschrift wie ein Arzt.</p></li>
+            <li><p><b>Pressen.</b> Mit Klammern und einer 10-kg-Kettlebell, die zufällig schon da war.</p></li>
+          </ol>
+        </div>
+        <div class="spalten unten">
+          <Foto bild={zuschnitt} alt="Hebelschneider beim Zuschnitt eines Papierbogens" text="Zuschnitt auf A5" lage="links" />
+          <p class="hinweis">
+            Das erste Buch hat ungefähr eine Stunde gedauert. Inzwischen arbeite ich in kleinen Chargen: erst alle Seiten drucken, dann alle
+            Umschläge, dann alles schneiden, falzen und so weiter.
+          </p>
+        </div>
+      </section>
+
+      <hr class="schnitt" />
+
+      <section class="abschnitt akzent-limette" aria-labelledby="log">
+        <span class="nummer">04</span>
+        <h2 id="log">Werkstatt-<mark>Log</mark></h2>
+        <ol class="log" reversed>
+          {
+            log.map((eintrag) => (
+              <li>
+                <time datetime={eintrag.datum}>{datum(eintrag.datum)}</time>
+                <span class:list={{ offen: eintrag.offen }}>{eintrag.text}</span>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+    </div>
+
+    <section class="kontakt" aria-labelledby="kontakt">
+      <div class="wrap">
+        <h2 id="kontakt">Eins haben wollen?</h2>
+        <p>Zu kaufen gibt's noch nichts – aber bald. Wenn du trotzdem eins willst, eine Idee hast oder einfach Hallo sagen möchtest:</p>
+        <a class="mail" href={`mailto:${mail}`}>{mail}</a>
+        <p class="schluss">
+          Ich journale selbst jeden Abend. Das bestärkt mich weiterzumachen – auch wenn ich am Ende der Einzige bin, der die vollschreibt.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap fuss">
+    <span>© 2026 c0re NOTES</span>
+    <span><a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a></span>
+  </footer>
+</Basis>

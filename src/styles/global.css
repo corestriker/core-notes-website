@@ -1,0 +1,394 @@
+/* Farben direkt von den Umschlägen abgenommen */
+:root {
+  --tinte: #1c1c1c;
+  --papier: #ecebe6;
+  --matte: #202322;
+  --weiss: #fbfaf7;
+
+  --mint: #8fd8c4;
+  --blau: #7cc0e8;
+  --gelb: #f2d64b;
+  --limette: #b5d35a;
+  --gruen: #74c25a;
+
+  --schrift-titel: "Jost Variable", "Jost", sans-serif;
+  --schrift-text: "Courier Prime", "Courier New", monospace;
+
+  --breite: 880px;
+  --rand: 20px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--papier);
+  /* leichte Papierkörnung */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  color: var(--tinte);
+  font: 17px/1.6 var(--schrift-text);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+a:focus-visible {
+  outline: 2px dashed var(--tinte);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: var(--breite);
+  margin: 0 auto;
+  padding: 0 var(--rand);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--schrift-titel);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(26px, 6vw, 34px);
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+
+h2 mark {
+  background: var(--akzent, var(--gelb));
+  color: inherit;
+  padding: 0 6px;
+}
+
+p + p {
+  margin-top: 14px;
+}
+
+/* Kopf */
+.kopf {
+  padding-block: 32px 20px;
+  display: grid;
+  gap: 14px;
+}
+
+.kopf h1 {
+  font-size: clamp(64px, 19vw, 150px);
+  line-height: 0.85;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.leiste {
+  border-top: 2px solid var(--tinte);
+  border-bottom: 2px solid var(--tinte);
+  padding: 6px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.einleitung {
+  font-size: clamp(18px, 4.4vw, 21px);
+  max-width: 34em;
+  margin-top: 8px;
+}
+
+/* Fotos wie aufgeklebt */
+.foto {
+  position: relative;
+  background: var(--weiss);
+  padding: 10px 10px 0;
+  box-shadow: 0 1px 2px #0003;
+}
+
+.foto figcaption {
+  padding: 8px 2px 10px;
+  font-size: 14px;
+}
+
+.foto.links {
+  transform: rotate(-1.8deg);
+}
+
+.foto.rechts {
+  transform: rotate(1.4deg);
+}
+
+.foto.klebeband::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: calc(50% - 45px);
+  width: 90px;
+  height: 26px;
+  background: #f7f0c8cc;
+  transform: rotate(3deg);
+}
+
+.collage {
+  display: grid;
+  gap: 32px;
+  margin: 28px 0 40px;
+}
+
+@media (min-width: 720px) {
+  .collage {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+
+  .collage > :nth-child(2) {
+    margin-top: 80px;
+  }
+}
+
+/* Abschnitte */
+.abschnitt {
+  padding: 8px 0;
+}
+
+.nummer {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.spalten {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 720px) {
+  .spalten {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.schnitt {
+  border: 0;
+  border-top: 2px dashed var(--tinte);
+  margin: 52px 0;
+  position: relative;
+  overflow: visible;
+}
+
+.schnitt::before {
+  content: "✂";
+  position: absolute;
+  left: 0;
+  top: -16px;
+  background: var(--papier);
+  padding-right: 8px;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+/* Datenblatt */
+.daten {
+  margin-top: 22px;
+  border-top: 1px dotted var(--tinte);
+}
+
+.daten div {
+  display: grid;
+  grid-template-columns: 7.5em 1fr;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px dotted var(--tinte);
+}
+
+.daten dt {
+  font-weight: 700;
+}
+
+.hinweis {
+  margin-top: 22px;
+  padding-left: 14px;
+  border-left: 4px solid var(--akzent, var(--gelb));
+}
+
+/* Herstellungsschritte */
+.schritte {
+  list-style: none;
+  padding: 0;
+  margin-top: 28px;
+  counter-reset: schritt;
+}
+
+.schritte li {
+  counter-increment: schritt;
+  display: grid;
+  grid-template-columns: 2.6em 1fr;
+  padding: 12px 0;
+  border-bottom: 1px dotted var(--tinte);
+}
+
+.schritte li::before {
+  content: counter(schritt, decimal-leading-zero);
+  font-weight: 700;
+}
+
+.schritte b {
+  font-family: var(--schrift-titel);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Log */
+.log {
+  margin-top: 18px;
+  list-style: none;
+  padding: 0;
+}
+
+.log li {
+  display: grid;
+  grid-template-columns: 7.5em 1fr;
+  gap: 8px;
+  padding: 9px 0;
+  border-bottom: 1px dotted var(--tinte);
+}
+
+.log time {
+  font-weight: 700;
+}
+
+.log .offen {
+  font-style: italic;
+}
+
+/* Kontakt */
+.kontakt {
+  background: var(--matte);
+  color: var(--papier);
+  padding: 56px 0;
+  margin-top: 72px;
+}
+
+.kontakt h2 {
+  color: var(--papier);
+}
+
+.kontakt .mail {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--gelb);
+  font-weight: 700;
+  font-size: clamp(20px, 5.6vw, 30px);
+  word-break: break-word;
+}
+
+.kontakt .schluss {
+  margin-top: 40px;
+  max-width: 34em;
+  opacity: 0.85;
+}
+
+/* Fuß */
+.fuss {
+  padding-block: 18px 40px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Rechtstexte */
+.recht {
+  padding-block: 32px 64px;
+  max-width: 40em;
+}
+
+.recht h1 {
+  font-size: clamp(36px, 9vw, 54px);
+  line-height: 1;
+  margin: 20px 0 28px;
+}
+
+.recht h2 {
+  font-size: 22px;
+  margin: 32px 0 10px;
+}
+
+.recht ul {
+  padding-left: 1.2em;
+}
+
+.zurueck {
+  font-size: 14px;
+}
+
+/* Akzentfarbe je Abschnitt – eine Umschlagfarbe pro Abschnitt */
+.akzent-mint {
+  --akzent: var(--mint);
+}
+
+.akzent-gelb {
+  --akzent: var(--gelb);
+}
+
+.akzent-blau {
+  --akzent: var(--blau);
+}
+
+.akzent-limette {
+  --akzent: var(--limette);
+}
+
+.spalten-bilder {
+  display: grid;
+  gap: 28px;
+}
+
+.akzent-blau > .foto {
+  margin: 8px 0 8px;
+}
+
+.spalten .schritte + .schritte {
+  margin-top: 0;
+}
+
+@media (min-width: 720px) {
+  .spalten .schritte + .schritte {
+    margin-top: 28px;
+  }
+}
+
+.spalten.unten {
+  margin-top: 36px;
+  align-items: center;
+}
+
+/* Rasterspalten dürfen schmaler werden als ihr Bild – sonst läuft die Seite auf dem Handy seitlich über. */
+.collage > *,
+.spalten > * {
+  min-width: 0;
+}
+
+.schritte.ab-acht {
+  counter-reset: schritt 7;
+}

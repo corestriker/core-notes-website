@@ -1,0 +1,39 @@
+---
+import Basis from "../layouts/Basis.astro";
+import { env } from "node:process";
+import { betreiber, platzhalterOffen } from "../data/betreiber";
+
+// Auf GitHub (CI) niemals mit Platzhaltern veröffentlichen.
+if (env.CI && platzhalterOffen) {
+  throw new Error("Impressum unvollständig: Platzhalter in src/data/betreiber.ts ausfüllen.");
+}
+---
+
+<Basis titel="Impressum – c0re NOTES" indexieren={false}>
+  <main class="wrap recht">
+    <a class="zurueck" href="/">← zurück zu c0re NOTES</a>
+    <h1>Impressum</h1>
+
+    <h2>Angaben gemäß § 5 DDG</h2>
+    <p>
+      {betreiber.name}<br />
+      {betreiber.strasse}<br />
+      {betreiber.ort}
+    </p>
+
+    <h2>Kontakt</h2>
+    <p>E-Mail: <a href={`mailto:${betreiber.mail}`}>{betreiber.mail}</a></p>
+
+    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+    <p>
+      {betreiber.name}<br />
+      Anschrift wie oben
+    </p>
+
+    <h2>Hinweis</h2>
+    <p>
+      c0re NOTES ist ein privates Projekt. Es werden derzeit keine Produkte verkauft. Die Notizbücher befinden sich noch in der
+      Entwicklung.
+    </p>
+  </main>
+</Basis>

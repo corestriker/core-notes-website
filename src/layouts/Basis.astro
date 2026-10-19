@@ -1,0 +1,79 @@
+---
+import "@fontsource-variable/jost/wght.css";
+import "@fontsource/courier-prime/latin-400.css";
+import "@fontsource/courier-prime/latin-700.css";
+import "../styles/global.css";
+import { getImage } from "astro:assets";
+import teilenBild from "../assets/fotos/reihe.jpg";
+
+interface Props {
+  titel?: string;
+  beschreibung?: string;
+  indexieren?: boolean;
+}
+
+const {
+  titel = "c0re NOTES – handgemachte A6-Notizbücher",
+  beschreibung = "c0re NOTES (core notes): handgemachte Taschennotizbücher im A6-Format, von Hand genäht, mit Punktraster. Bald erhältlich – hier gibt es einen ersten Blick in die Werkstatt.",
+  indexieren = true,
+} = Astro.props;
+
+const vorschau = await getImage({ src: teilenBild, width: 1200, height: 630, fit: "cover", format: "jpeg" });
+const vorschauUrl = new URL(vorschau.src, Astro.site);
+const kanonisch = new URL(Astro.url.pathname, Astro.site);
+
+// Strukturierte Daten für Suchmaschinen (kein ausführbares Skript, nur Daten).
+const strukturiert = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "c0re NOTES",
+  alternateName: ["core notes", "c0re notes", "Core Notes Notizbuch"],
+  url: Astro.site,
+  inLanguage: "de-DE",
+  description: beschreibung,
+});
+
+// Kein JavaScript, keine externen Quellen: alles kommt von der eigenen Domain.
+const csp = [
+  "default-src 'none'",
+  "img-src 'self' data:",
+  "style-src 'self'",
+  "font-src 'self'",
+  "base-uri 'none'",
+  "form-action 'none'",
+].join("; ");
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {import.meta.env.PROD && <meta http-equiv="Content-Security-Policy" content={csp} />}
+    <meta name="referrer" content="no-referrer" />
+    <title>{titel}</title>
+    <meta name="description" content={beschreibung} />
+    {!indexieren && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={kanonisch} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ecebe6" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:title" content={titel} />
+    <meta property="og:description" content={beschreibung} />
+    <meta property="og:url" content={kanonisch} />
+    <meta property="og:image" content={vorschauUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Fünf handgemachte c0re NOTES Notizbücher in verschiedenen Farben" />
+    <meta property="og:site_name" content="c0re NOTES" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    {indexieren && <script type="application/ld+json" set:html={strukturiert} />}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,16 @@
+# Originalfotos (Metadaten, GPS, Größe) – niemals committen
+fotos-no-commit/
+
+# Build & Abhängigkeiten
+dist/
+.astro/
+node_modules/
+
+# System
+.DS_Store
+*.log
+.env*
+
+# IDE
+.idea/
+.vscode/

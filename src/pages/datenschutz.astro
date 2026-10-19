@@ -1,0 +1,59 @@
+---
+import Basis from "../layouts/Basis.astro";
+import { betreiber } from "../data/betreiber";
+---
+
+<Basis titel="Datenschutz – c0re NOTES" indexieren={false}>
+  <main class="wrap recht">
+    <a class="zurueck" href="/">← zurück zu c0re NOTES</a>
+    <h1>Datenschutz&shy;erklärung</h1>
+
+    <p>Kurz vorweg: Diese Website setzt keine Cookies, verwendet keine Analyse- oder Tracking-Werkzeuge und lädt keine Inhalte von Dritten. Schriften und Bilder liegen auf dieser Domain.</p>
+
+    <h2>1. Verantwortlicher</h2>
+    <p>
+      {betreiber.name}<br />
+      {betreiber.strasse}<br />
+      {betreiber.ort}<br />
+      E-Mail: <a href={`mailto:${betreiber.mail}`}>{betreiber.mail}</a>
+    </p>
+
+    <h2>2. Hosting über GitHub Pages</h2>
+    <p>
+      Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco,
+      CA 94107, USA. Beim Aufruf der Seite verarbeitet GitHub technisch notwendige Daten, insbesondere deine IP-Adresse, Datum und
+      Uhrzeit des Abrufs, die aufgerufene Seite sowie Angaben zu Browser und Betriebssystem (Server-Logfiles). Das ist nötig, um die
+      Seite auszuliefern und den Betrieb abzusichern.
+    </p>
+    <p>
+      Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Mein berechtigtes Interesse liegt in einer sicheren und zuverlässigen
+      Bereitstellung der Website. Dabei können Daten in die USA übermittelt werden. GitHub ist nach dem EU-US Data Privacy Framework
+      zertifiziert (Art. 45 DSGVO). Auf die Logfiles habe ich selbst keinen Zugriff.
+    </p>
+    <p>
+      Mehr dazu in der Datenschutzerklärung von GitHub: docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement
+    </p>
+
+    <h2>3. Kontakt per E-Mail</h2>
+    <p>
+      Wenn du mir eine E-Mail schreibst, verarbeite ich deine Adresse und den Inhalt der Nachricht, um dir zu antworten. Rechtsgrundlage
+      ist Art. 6 Abs. 1 lit. f DSGVO (Beantwortung deiner Anfrage). E-Mails an {betreiber.mail} werden über den Weiterleitungsdienst
+      meines Domain-Anbieters (Porkbun LLC, USA) an mein privates Postfach zugestellt. Ich lösche deine Nachricht, sobald sie erledigt
+      ist und keine Aufbewahrungspflichten entgegenstehen.
+    </p>
+
+    <h2>4. Deine Rechte</h2>
+    <p>Du hast das Recht auf</p>
+    <ul>
+      <li>Auskunft über deine gespeicherten Daten (Art. 15 DSGVO),</li>
+      <li>Berichtigung (Art. 16 DSGVO),</li>
+      <li>Löschung (Art. 17 DSGVO),</li>
+      <li>Einschränkung der Verarbeitung (Art. 18 DSGVO),</li>
+      <li>Datenübertragbarkeit (Art. 20 DSGVO),</li>
+      <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO).</li>
+    </ul>
+    <p>Eine formlose E-Mail genügt. Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren (Art. 77 DSGVO).</p>
+
+    <p><small>Stand: Oktober 2026</small></p>
+  </main>
+</Basis>
