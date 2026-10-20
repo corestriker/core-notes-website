@@ -13,9 +13,9 @@ import zuschnitt from "../assets/fotos/zuschnitt.jpg";
 const mail = "hallo@core-notes.de";
 
 // Werkstatt-Log: neueste Einträge oben. Nur echte Daten!
-const log: { datum: string; text: string; offen?: boolean }[] = [
+const log: { datum: string; text: string }[] = [
   { datum: "2026-10-19", text: "Fünf Farben fertig, erste Fotos." },
-  { datum: "2026-10-18", text: "Beschnittgerät und einen Eckenrunder fürs ganze Buch bestellt.", offen: true },
+  { datum: "2026-10-18", text: "Beschnittgerät und einen Eckenrunder fürs ganze Buch bestellt." },
   { datum: "2026-10-15", text: "Die ersten Prototypen sind genäht." },
   { datum: "2026-10-13", text: "Erster Druck. Der alte Drucker läuft wieder." },
   { datum: "2026-10-07", text: "Erste Vorlagen in Inkscape." },
@@ -165,7 +165,7 @@ const datum = (iso: string) => new Date(iso).toLocaleDateString("de-DE", { day: 
             log.map((eintrag) => (
               <li>
                 <time datetime={eintrag.datum}>{datum(eintrag.datum)}</time>
-                <span class:list={{ offen: eintrag.offen }}>{eintrag.text}</span>
+                <span>{eintrag.text}</span>
               </li>
             ))
           }

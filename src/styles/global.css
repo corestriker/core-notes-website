@@ -276,10 +276,6 @@ p + p {
   font-weight: 700;
 }
 
-.log .offen {
-  font-style: italic;
-}
-
 /* Kontakt */
 .kontakt {
   background: var(--matte);
