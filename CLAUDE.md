@@ -1,6 +1,6 @@
 # core-notes.de
 
-Coming-soon-/Vorschau-Seite für **c0re NOTES** – handgemachte A6-Notizbücher. Privates Hobbyprojekt, kein Shop.
+Coming-soon-/Vorschau-Seite für **c0re NOTES** – handgemachte Notizbücher (knapp A6). Privates Hobbyprojekt, kein Shop.
 Die Domain ist auf jedes Buch gedruckt: Die Seite muss immer erreichbar sein, URLs nie brechen.
 
 ## Technik
