@@ -360,10 +360,6 @@ p + p {
   gap: 28px;
 }
 
-.akzent-blau > .foto {
-  margin: 8px 0 8px;
-}
-
 .spalten .schritte + .schritte {
   margin-top: 0;
 }
@@ -379,8 +375,31 @@ p + p {
   align-items: center;
 }
 
+.fotoraster {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 16px;
+  margin-top: 36px;
+}
+
+@media (min-width: 720px) {
+  .fotoraster {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 28px;
+  }
+}
+
+.fotoraster .foto {
+  padding: 6px 6px 0;
+}
+
+.fotoraster .foto figcaption {
+  font-size: 13px;
+}
+
 /* Rasterspalten dürfen schmaler werden als ihr Bild – sonst läuft die Seite auf dem Handy seitlich über. */
 .collage > *,
+.fotoraster > *,
 .spalten > * {
   min-width: 0;
 }

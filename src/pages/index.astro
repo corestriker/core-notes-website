@@ -6,11 +6,16 @@ import faecher from "../assets/fotos/faecher.jpg";
 import ruecken from "../assets/fotos/ruecken.jpg";
 import innen from "../assets/fotos/innen.jpg";
 import rueckseite from "../assets/fotos/rueckseite.jpg";
-import klammern from "../assets/fotos/klammern.jpg";
+import pressen from "../assets/fotos/pressen.jpg";
 import werkbank from "../assets/fotos/werkbank.jpg";
 import zuschnitt from "../assets/fotos/zuschnitt.jpg";
+import stechen from "../assets/fotos/stechen.jpg";
+import naehen from "../assets/fotos/naehen.jpg";
+import beschnitt from "../assets/fotos/beschnitt.jpg";
+import ecken from "../assets/fotos/ecken.jpg";
 
 const mail = "hallo@core-notes.de";
+const rasterSizes = "(min-width: 880px) 270px, (min-width: 720px) 30vw, 45vw";
 
 // Werkstatt-Log: neueste Einträge oben. Nur echte Daten!
 const log: { datum: string; text: string }[] = [
@@ -39,8 +44,8 @@ const datum = (iso: string) => new Date(iso).toLocaleDateString("de-DE", { day: 
   <main>
     <div class="wrap">
       <div class="collage">
-        <Foto bild={faecher} alt="Fünf Notizbücher in Grün, Limette, Gelb, Blau und Mint, aufgefächert auf einer Schneidematte" text="die ersten fünf" lage="links" klebeband sofort />
-        <Foto bild={ruecken} alt="Nahaufnahme der genähten Buchrücken" text="von Hand genäht" lage="rechts" klebeband />
+        <Foto bild={faecher} alt="Notizbücher in vielen Farben, im Bogen aufgefächert auf einer Schneidematte" text="Farbe für Farbe aus dem Kartonblock" lage="links" klebeband sofort />
+        <Foto bild={ruecken} alt="Nahaufnahme eines blauen Notizbuchs mit genähtem Rücken" text="von Hand genäht" lage="rechts" klebeband />
       </div>
 
       <hr class="schnitt" />
@@ -66,7 +71,7 @@ const datum = (iso: string) => new Date(iso).toLocaleDateString("de-DE", { day: 
             </p>
           </div>
           <div class="spalten-bilder">
-            <Foto bild={innen} alt="Aufgeschlagenes Notizbuch mit Punktraster" text="innen: Punktraster, 4 mm" lage="rechts" />
+            <Foto bild={innen} alt="Aufgeschlagene, genähte Seiten mit Punktraster" text="innen: Punktraster, 4 mm" lage="rechts" />
             <Foto bild={rueckseite} alt="Gelbe Rückseite mit Feld für die Nummer und dem Hinweis Handgemacht in Deutschland" text="hinten: Nr. ___" />
           </div>
         </div>
@@ -99,12 +104,13 @@ const datum = (iso: string) => new Date(iso).toLocaleDateString("de-DE", { day: 
               Laufen gebracht, Tinte bestellt, gutes Papier besorgt.
             </p>
             <p>
-              Jetzt sitze ich hier mit den ersten fünf Büchern. Alle haben noch Schönheitsfehler und brauchen Verbesserung. Aber ich will
+              Inzwischen sind es um die 20 Bücher. Feste Farben gibt es nicht: Ich hab einen Kartonblock mit vielen Farben und
+              verarbeite ihn einfach nach und nach. Alle haben noch Schönheitsfehler und brauchen Verbesserung. Aber ich will
               weitermachen. Macht Spaß.
             </p>
           </div>
           <div>
-            <Foto bild={klammern} alt="Drei Notizbücher mit Klammern auf der Schneidematte, daneben Garn und Werkzeug" text="frisch genäht, noch in der Presse" lage="links" klebeband />
+            <Foto bild={pressen} alt="Gelb-graue Kettlebell auf einem Stapel Notizbücher, auf der Schneidematte" text="frisch genäht, unter der Kettlebell" lage="links" klebeband />
             <p class="hinweis">
               <b>Und der Name?</b> Core Notes, also Kern-Notizen: Ins kleine Buch kommt das Wesentliche. Die Null ist meine persönliche
               Note, c0re nutze ich schon länger für eigene Projekte.
@@ -118,7 +124,6 @@ const datum = (iso: string) => new Date(iso).toLocaleDateString("de-DE", { day: 
       <section class="abschnitt akzent-blau" aria-labelledby="entstehung">
         <span class="nummer">03</span>
         <h2 id="entstehung">Wie es <mark>entsteht</mark></h2>
-        <Foto bild={werkbank} alt="Arbeitsplatz: Schneidematte mit Umschlägen, Papierbögen, Falzbein, Ahle, Stickgarn und Lineal" text="der Arbeitsplatz" sizes="(min-width: 880px) 840px, 92vw" />
         <div class="spalten">
           <ol class="schritte">
             <li><p><b>Vorlagen.</b> Umschlag außen, innen und die Punktseiten – selbst gestaltet in Inkscape.</p></li>
@@ -138,16 +143,23 @@ const datum = (iso: string) => new Date(iso).toLocaleDateString("de-DE", { day: 
             <li>
               <p>
                 <b>Beschneiden.</b> Beim Falten steht das innere Papier am weitesten raus. Also müssen die drei Außenkanten nochmal sauber
-                geschnitten werden. Das schafft mein aktuelles Gerät nicht – ein neues ist bestellt.
+                geschnitten werden – mit dem Stapelschneider, das ganze Buch auf einmal.
               </p>
             </li>
-            <li><p><b>Ecken runden.</b> Im Moment noch Blatt für Blatt. Ein Eckenrunder fürs ganze Buch ist unterwegs.</p></li>
+            <li><p><b>Ecken runden.</b> Mit dem Eckenrunder, ebenfalls das ganze Buch auf einmal.</p></li>
             <li><p><b>Nummerieren.</b> Die Chargennummer auf der Rückseite. Von Hand oder per Drucker? Noch offen. Leider hab ich eine Handschrift wie ein Arzt.</p></li>
             <li><p><b>Pressen.</b> Mit Klammern und einer 10-kg-Kettlebell, die zufällig schon da war.</p></li>
           </ol>
         </div>
+        <div class="fotoraster">
+          <Foto bild={werkbank} alt="Arbeitsplatz: Schneidematte mit Umschlägen, Papierbögen, Falzbein, Ahlen und Lineal" text="der Arbeitsplatz" lage="links" sizes={rasterSizes} />
+          <Foto bild={zuschnitt} alt="Hebelschneider beim Zuschnitt eines blauen Umschlagbogens" text="Zuschnitt auf A5" lage="rechts" sizes={rasterSizes} />
+          <Foto bild={stechen} alt="Ahle sticht durch eine Kartonschablone in den gefalzten Bogen" text="Stechen mit Schablone" sizes={rasterSizes} />
+          <Foto bild={naehen} alt="Nadel mit Garn im Falz der aufgeschlagenen Seiten" text="Nähen" lage="links" sizes={rasterSizes} />
+          <Foto bild={beschnitt} alt="Genähtes Notizbuch im Stapelschneider" text="Beschnitt" lage="rechts" sizes={rasterSizes} />
+          <Foto bild={ecken} alt="Notizbuch im Eckenrunder" text="Ecken runden" sizes={rasterSizes} />
+        </div>
         <div class="spalten unten">
-          <Foto bild={zuschnitt} alt="Hebelschneider beim Zuschnitt eines Papierbogens" text="Zuschnitt auf A5" lage="links" />
           <p class="hinweis">
             Das erste Buch hat ungefähr eine Stunde gedauert. Inzwischen arbeite ich in kleinen Chargen: erst alle Seiten drucken, dann alle
             Umschläge, dann alles schneiden, falzen und so weiter.
